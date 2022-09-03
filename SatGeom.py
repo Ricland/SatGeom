@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets, QtGui
 import design
 import math
 
-class ExampleApp(QtWidgets.QMainWindow, design.Ui_Form) :
+class SatGeom(QtWidgets.QMainWindow, design.Ui_Form) :
     def __init__(self): 
         super().__init__()
         self.setupUi(self)  
@@ -84,8 +84,8 @@ def calc (latRec, lngRec, latSat, lngSat, h) :
     latP = math.asin(math.sin(latRec) * math.cos(psyP) + math.cos(latRec) * math.sin(psyP) * math.cos(azimS)) #широта подионосферной точки
     lngP = lngRec + math.asin(math.sin(psyP) * math.sin(azimS) / math.cos(latP)) #долгота подионосферной точки
 
-    dRecP = 2 * rE * math.asin(math.sqrt((math.sin((latRec - latP) / 2)) ** 2 + math.cos(latRec) * math.cos(latP) * math.sin((lngRec - lngP) / 2) ** 2)) #расстояние от приёмника до проекции подионосферной точки
-    dPSat = 2 * rE * math.asin(math.sqrt((math.sin((latP - latSat) / 2)) ** 2 + math.cos(latP) * math.cos(latSat) * math.sin((lngP - lngSat) / 2) ** 2)) #расстояние от проекции подионосферной точки до проекции НИСЗ на Землю
+    dRecP = 2 * rE * math.asin(math.sqrt((math.sin((latRec - latP) / 2)) ** 2 + math.cos(latRec) * math.cos(latP) * math.sin((lngRec - lngP) / 2) ** 2)) #расстояние от приёмника до подионосферной точки
+    dPSat = 2 * rE * math.asin(math.sqrt((math.sin((latP - latSat) / 2)) ** 2 + math.cos(latP) * math.cos(latSat) * math.sin((lngP - lngSat) / 2) ** 2)) #расстояние от подионосферной точки до проекции НИСЗ на Землю
     
     return radToDeg(azimS), radToDeg(elevS), radToDeg(latP), radToDeg(lngP), dRecP, dPSat
 
@@ -110,7 +110,7 @@ def validation_of_data_2 (latSat, lngSat) :
             
 def main() :
     app = QtWidgets.QApplication(sys.argv)
-    window = ExampleApp()
+    window = SatGeom()
     window.show()
     app.exec_()
 
