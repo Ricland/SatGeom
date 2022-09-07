@@ -6,7 +6,7 @@
 и расстояние между двумя подионосферными точками, если заданы координаты двух НИСЗ.
 
 <p align="center">
-  <img src="https://github.com/Ricland/Pictures/raw/main/SatGeom_pic.png" width = 50%>
+  <img src="https://github.com/Ricland/Pictures/raw/main/SatGeom_pic.png" width = 60%>
 </p>
 
 Здесь &phi; — географическая широта, &lambda; — географическая долгота, Zm — высота максимума ионизации ионосферы. Для северного полушария широта положительна, 
